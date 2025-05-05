@@ -20,7 +20,9 @@ export async function POST(request: NextRequest) {
   try {
     await dbConnect();
     const body = await request.json();
+    console.log("Received book data:", body); // Логирование полученных данных
     const book = await Book.create(body); // Create new book
+    console.log("Book created successfully:", book); // Логирование успешного создания
     return NextResponse.json({ success: true, data: book }, { status: 201 }); // 201 Created
   } catch (error: any) {
     console.error("API POST Error:", error);
@@ -30,6 +32,17 @@ export async function POST(request: NextRequest) {
         { success: false, message: "Validation Error", errors: error.errors },
         { status: 400 }
       ); // 400 Bad Request
+    }
+    // Handle potential duplicate key errors (e.g., unique ISBN)
+    if (error.code === 11000) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Duplicate Key Error",
+          details: error.keyValue,
+        },
+        { status: 409 }
+      ); // 409 Conflict
     }
     return NextResponse.json(
       { success: false, message: error.message || "Server Error" },

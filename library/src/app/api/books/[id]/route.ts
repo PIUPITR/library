@@ -16,7 +16,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Params }
 ) {
-  const { id } = params;
+  const { id } = await params;
 
   if (!isValidObjectId(id)) {
     return NextResponse.json(
@@ -48,7 +48,7 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Params }
 ) {
-  const { id } = params;
+  const { id } = await params;
 
   if (!isValidObjectId(id)) {
     return NextResponse.json(
@@ -90,7 +90,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Params }
 ) {
-  const { id } = params;
+  const { id } = await params;
 
   if (!isValidObjectId(id)) {
     return NextResponse.json(

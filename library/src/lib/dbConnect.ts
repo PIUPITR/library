@@ -28,7 +28,7 @@ async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      dbName: process.env.DB_NAME || "DanielServer", // Use DB_NAME from env or default
+      dbName: process.env.DB_NAME || "library", // Use DB_NAME from env or default
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
