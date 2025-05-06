@@ -1,114 +1,85 @@
-# Book Library - Next.js Project
+# Knygų Biblioteka – Next.js Projektas
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). It's a simple web application for managing a book collection, built as a university project.
+Tai yra [Next.js](https://nextjs.org) pagrindu sukurtas projektas, skirtas knygų kolekcijos valdymui. Šis projektas naudoja MongoDB duomenų bazę, Tailwind CSS ir Bootstrap stilių sistemas.
 
-## Features
+## Kaip pradėti naudotis projektu
 
-- View a list of books
-- View details for a specific book
-- Add new books to the collection
-- Update existing book details
-- Delete books from the collection
-- Uses MongoDB for data storage
-- Styled with Tailwind CSS and Bootstrap
+### 1. Kaip atsisiųsti (klonuoti) projektą
 
-## Prerequisites
+1. Atidarykite savo kompiuteryje „Terminal“ (arba „Komandinę eilutę“).
+2. Įrašykite šią komandą ir paspauskite Enter (vietoje `<jūsų-repozitorijos-nuoroda>` įrašykite nuorodą į šį projektą, pvz., iš GitHub):
 
-- [Node.js](https://nodejs.org/) (version 20.x or later recommended)
-- [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/), [pnpm](https://pnpm.io/), or [bun](https://bun.sh/) (choose one package manager)
-- A [MongoDB](https://www.mongodb.com/) database (e.g., a free cluster on MongoDB Atlas)
+   ```bash
+   git clone <jūsų-repozitorijos-nuoroda>
+   ```
 
-## Getting Started
+3. Įeikite į projekto aplanką:
 
-Follow these steps to set up and run the project locally:
+   ```bash
+   cd library
+   ```
 
-**1. Clone the Repository (if applicable)**
+### 2. Kaip įdiegti reikalingas bibliotekas
 
-If you haven't already, clone the project repository to your local machine:
+1. Įsitikinkite, kad jūsų kompiuteryje įdiegtas [Node.js](https://nodejs.org/) (rekomenduojama 20 versija ar naujesnė).
+2. Projekte yra failas `package.json`, kuriame surašytos visos reikalingos bibliotekos.
+3. Įrašykite vieną iš šių komandų (naudokite tik vieną, pvz., `npm install`):
 
-```bash
-git clone <your-repository-url>
-cd library
-```
+   ```bash
+   npm install
+   # arba
+   yarn install
+   # arba
+   pnpm install
+   # arba
+   bun install
+   ```
 
-**2. Install Dependencies**
+   Ši komanda automatiškai atsisiųs ir įdiegs visas reikalingas bibliotekas.
 
-Navigate to the project directory in your terminal and install the required libraries using your preferred package manager:
+### 3. Kaip sukonfigūruoti duomenų bazės prisijungimą
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
+1. Sukurkite failą `.env.local` projekto šakniniame aplanke (`c:\Projects\library\library\.env.local`).
+2. Į šį failą įrašykite savo MongoDB prisijungimo nuorodą. Pakeiskite `<naudotojas>`, `<slaptažodis>`, `<jūsų-klasterio-nuoroda>` ir, jei reikia, duomenų bazės pavadinimą:
 
-This command reads the `package.json` file and downloads all the necessary libraries listed under `dependencies` and `devDependencies`, such as Next.js, React, Mongoose, Bootstrap, Tailwind CSS, etc.
+   ```bash
+   # c:\Projects\library\library\.env.local
 
-**3. Set Up Environment Variables**
+   MONGODB_URI=mongodb+srv://<naudotojas>:<slaptažodis>@<jūsų-klasterio-nuoroda>/libraryDB?retryWrites=true&w=majority
+   ```
 
-You need to connect the application to your MongoDB database.
+### 4. Kaip paleisti projektą
 
-- Create a file named `.env.local` in the root directory of the project (`c:\Projects\library\library\.env.local`).
-- Add your MongoDB connection string to this file. Replace `<username>`, `<password>`, and `<your-cluster-url>` with your actual MongoDB Atlas credentials and cluster details. Replace `libraryDB` if you chose a different database name.
+1. Įrašykite vieną iš šių komandų (naudokite tik vieną):
 
-  ```bash
-  # c:\Projects\library\library\.env.local
+   ```bash
+   npm run dev
+   # arba
+   yarn dev
+   # arba
+   pnpm dev
+   # arba
+   bun dev
+   ```
 
-  MONGODB_URI=mongodb+srv://<username>:<password>@<your-cluster-url>/libraryDB?retryWrites=true&w=majority
-  ```
+2. Atidarykite naršyklę ir įveskite adresą: [http://localhost:3000](http://localhost:3000)
 
-  **Important:** The `.env.local` file is included in `.gitignore` by default, so your sensitive credentials won't be committed to version control.
+### 5. Kaip naudotis programa
 
-**4. Run the Development Server**
+- Galite peržiūrėti knygų sąrašą, pridėti naujų knygų, redaguoti ar ištrinti esamas.
+- Visi puslapiai yra lietuvių kalba ir pritaikyti paprastam naudojimui.
 
-Start the Next.js development server:
+## Projekto struktūra
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `src/app/` – pagrindiniai puslapiai ir maršrutai.
+- `src/app/api/` – API užklausų apdorojimas (backend).
+- `src/lib/` – pagalbinės funkcijos (pvz., prisijungimas prie duomenų bazės).
+- `src/models/` – duomenų modeliai (pvz., `Book.ts`).
+- `public/` – statiniai failai (pvz., paveikslėliai).
+- `tailwind.config.ts` – Tailwind CSS nustatymai.
+- `.env.local` – aplinkos kintamieji (slapti duomenys).
 
-This command starts the application in development mode with hot-reloading enabled. It uses Turbopack for faster development builds (`--turbopack` flag in `package.json`).
+## Dažniausios problemos
 
-**5. Open the Application**
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the running application.
-
-You can start editing the pages by modifying files in the `src/app/` directory. The page auto-updates as you edit the files.
-
-## Project Structure Highlights
-
-- `src/app/`: Contains the application's pages and layouts (using Next.js App Router).
-- `src/app/api/`: Contains the backend API route handlers.
-- `src/lib/`: Utility functions, like the database connection (`dbConnect.ts`).
-- `src/models/`: Mongoose data models (e.g., `Book.ts`).
-- `public/`: Static assets like images.
-- `tailwind.config.ts`: Configuration for Tailwind CSS.
-- `postcss.config.mjs`: Configuration for PostCSS (used by Tailwind).
-- `.env.local`: Environment variables (ignored by Git).
-- `package.json`: Project dependencies and scripts.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Remember to configure the `MONGODB_URI` environment variable in your Vercel project settings.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Jei matote klaidą apie MongoDB prisijungimą – patikrinkite `.env.local` failą ir ar MongoDB veikia.
+- Jei neišsaugojote bibliotekų – pakartokite `npm install` ar kitą diegimo komandą.
