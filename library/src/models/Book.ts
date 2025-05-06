@@ -4,8 +4,8 @@ export interface IBook extends Document {
   author: string;
   description?: string;
   isbn?: string;
-  publishedYear?: number; // Added publishedYear
-  genre?: string; // Added genre
+  publishedYear?: number;
+  genre?: string;
 }
 
 const BookSchema: Schema = new Schema(

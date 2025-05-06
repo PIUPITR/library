@@ -67,8 +67,7 @@ export default function BookDetailPage() {
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Failed to delete book");
       }
-      alert("Book deleted successfully!");
-      router.push("/books"); // Redirect to book list after deletion
+      router.push("/books?deleted=1"); // Redirect to book list after deletion with delete message
     } catch (err: any) {
       setError(err.message); // Show error on the detail page
       alert(`Error deleting book: ${err.message}`);
@@ -142,12 +141,22 @@ export default function BookDetailPage() {
           {/* Action Buttons using react-bootstrap */}
           <div className="d-flex gap-2 mt-3">
             <Link href={`/edit-book/${book._id}`} passHref legacyBehavior>
-              <Button variant="primary">Edit Book</Button>
+              <Button variant="primary" className="no-underline">
+                Edit Book
+              </Button>
             </Link>
-            <Button variant="danger" onClick={handleDelete}>
+            <Button
+              variant="danger"
+              onClick={handleDelete}
+              className="no-underline"
+            >
               Delete Book
             </Button>
-            <Button variant="secondary" onClick={() => router.back()}>
+            <Button
+              variant="secondary"
+              onClick={() => router.back()}
+              className="no-underline"
+            >
               Go Back
             </Button>
           </div>

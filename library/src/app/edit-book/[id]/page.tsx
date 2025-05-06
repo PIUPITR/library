@@ -1,8 +1,8 @@
-"use client"; // Make this a Client Component
+"use client";
 
 import { useState, useEffect, FormEvent } from "react";
-import { useParams, useRouter } from "next/navigation"; // Import useParams and useRouter
-import { IBook } from "@/models/Book"; // Import the IBook interface
+import { useParams, useRouter } from "next/navigation";
+import { IBook } from "@/models/Book";
 
 export default function EditBookPage() {
   const params = useParams();
@@ -15,8 +15,8 @@ export default function EditBookPage() {
       author: "",
       description: "",
       isbn: "",
-      publishedYear: undefined, // Initialize new fields
-      genre: "", // Initialize new fields
+      publishedYear: undefined,
+      genre: "",
     }
   );
   const [loading, setLoading] = useState(true);
@@ -109,8 +109,7 @@ export default function EditBookPage() {
       }
 
       // Success
-      alert("Book updated successfully!");
-      router.push("/books"); // Redirect back to the book list
+      router.push(`/books?updated=1&id=${id}`); // Redirect back to the book list with update message
     } catch (err: any) {
       setError(err.message);
       console.error(err);
@@ -149,7 +148,7 @@ export default function EditBookPage() {
             value={book.title || ""}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="custom-input"
           />
         </div>
         <div>
@@ -166,7 +165,7 @@ export default function EditBookPage() {
             value={book.author || ""}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="custom-input"
           />
         </div>
         <div>
@@ -182,7 +181,7 @@ export default function EditBookPage() {
             rows={3}
             value={book.description || ""}
             onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="custom-input"
           ></textarea>
         </div>
         <div>
@@ -198,7 +197,7 @@ export default function EditBookPage() {
             name="isbn"
             value={book.isbn || ""}
             onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="custom-input"
           />
         </div>
 
@@ -215,7 +214,7 @@ export default function EditBookPage() {
             name="publishedYear"
             value={book.publishedYear || ""}
             onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="custom-input"
           />
         </div>
 
@@ -232,7 +231,7 @@ export default function EditBookPage() {
             name="genre"
             value={book.genre || ""}
             onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="custom-input"
           />
         </div>
 
@@ -244,14 +243,14 @@ export default function EditBookPage() {
               submitting || loading || !id
                 ? "bg-indigo-300"
                 : "bg-indigo-600 hover:bg-indigo-700"
-            } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+            } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 no-underline`}
           >
             {submitting ? "Updating..." : "Update Book"}
           </button>
           <button
             type="button"
             onClick={() => router.back()}
-            className="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 no-underline"
           >
             Cancel
           </button>
