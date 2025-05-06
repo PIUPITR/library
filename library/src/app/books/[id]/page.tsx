@@ -6,8 +6,8 @@ import Link from "next/link";
 import { IBook } from "@/models/Book";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner"; // For loading state
-import Alert from "react-bootstrap/Alert"; // For error state
+import Spinner from "react-bootstrap/Spinner";
+import Alert from "react-bootstrap/Alert";
 
 // Define the structure of the book data received from the API, including the _id
 interface BookWithId extends IBook {
