@@ -9,16 +9,13 @@ export default function Home() {
         books.
       </p>
       <Image
-        src="/book.jpg" // Placeholder - replace with an actual relevant image
+        src="/book.png"
         alt="Library Banner"
         width={600}
         height={300}
         priority
         className="rounded shadow-lg"
-        // Add placeholder image or remove if not available
-        style={{ display: "none" }} // Hide if no image available yet
       />
-      {/* You can add more introductory elements here */}
     </div>
   );
 }

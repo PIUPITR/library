@@ -8,11 +8,6 @@ if (!MONGODB_URI) {
   );
 }
 
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
- */
 let cached = (global as any).mongoose;
 
 if (!cached) {
@@ -28,7 +23,7 @@ async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      dbName: process.env.DB_NAME || "library", // Use DB_NAME from env or default
+      dbName: process.env.DB_NAME || "library",
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {

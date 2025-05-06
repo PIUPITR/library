@@ -126,13 +126,11 @@ export default function EditBookPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-4">Edit Book</h1>
-      {/* Display initial loading error if book data couldn't be fetched */}
       {error && !book.title && (
         <p className="text-red-500 mb-4">Error loading book data: {error}</p>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
-        {/* Display submission errors */}
         {error && book.title && (
           <p className="text-red-500 text-sm mb-4">Error: {error}</p>
         )}
@@ -204,7 +202,6 @@ export default function EditBookPage() {
           />
         </div>
 
-        {/* New Published Year field */}
         <div>
           <label
             htmlFor="publishedYear"
@@ -216,13 +213,12 @@ export default function EditBookPage() {
             type="number"
             id="publishedYear"
             name="publishedYear"
-            value={book.publishedYear || ""} // Handle potential undefined/null
+            value={book.publishedYear || ""}
             onChange={handleChange}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
 
-        {/* New Genre field */}
         <div>
           <label
             htmlFor="genre"
@@ -234,7 +230,7 @@ export default function EditBookPage() {
             type="text"
             id="genre"
             name="genre"
-            value={book.genre || ""} // Handle potential undefined/null
+            value={book.genre || ""}
             onChange={handleChange}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
@@ -243,7 +239,7 @@ export default function EditBookPage() {
         <div className="flex space-x-3">
           <button
             type="submit"
-            disabled={submitting || loading || !id} // Disable if loading, submitting, or no ID
+            disabled={submitting || loading || !id}
             className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
               submitting || loading || !id
                 ? "bg-indigo-300"
@@ -254,7 +250,7 @@ export default function EditBookPage() {
           </button>
           <button
             type="button"
-            onClick={() => router.back()} // Go back to the previous page
+            onClick={() => router.back()}
             className="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Cancel

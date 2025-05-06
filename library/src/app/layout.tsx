@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import "./globals.css"; // Your custom global styles (can override Bootstrap)
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Book Library",
   description: "A simple book library application",
-  keywords: "books, library, nextjs, react, mongodb", // SEO Keywords
+  keywords: "books, library, nextjs, react, mongodb",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
               <li>
                 <Link
                   href="/"
-                  className="text-gray-300 hover:text-white no-underline"
+                  className="text-gray-400 hover:text-white no-underline"
                 >
                   Home
                 </Link>
@@ -66,7 +66,7 @@ export default function RootLayout({
         </nav>
         <main className="container mx-auto p-4 mt-4">{children}</main>
         <footer className="text-center p-4 mt-8 text-gray-600 border-t border-gray-200">
-          © {new Date().getFullYear()} Book Library - University Project
+          © {new Date().getFullYear()} Book Library
         </footer>
       </body>
     </html>
