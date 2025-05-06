@@ -9,7 +9,7 @@ export default function Home() {
         books.
       </p>
       <Image
-        src="/library-banner.jpg" // Placeholder - replace with an actual relevant image
+        src="/book.jpg" // Placeholder - replace with an actual relevant image
         alt="Library Banner"
         width={600}
         height={300}

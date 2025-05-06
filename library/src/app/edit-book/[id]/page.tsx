@@ -9,14 +9,16 @@ export default function EditBookPage() {
   const router = useRouter();
   const id = params?.id as string | undefined; // Get ID from URL path
 
-  const [book, setBook] = useState<Partial<IBook>>({
-    title: "",
-    author: "",
-    description: "",
-    isbn: "",
-    publishedYear: undefined, // Initialize new fields
-    genre: "", // Initialize new fields
-  });
+  const [book, setBook] = useState<Partial<IBook & { publishedYear?: number }>>(
+    {
+      title: "",
+      author: "",
+      description: "",
+      isbn: "",
+      publishedYear: undefined, // Initialize new fields
+      genre: "", // Initialize new fields
+    }
+  );
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
