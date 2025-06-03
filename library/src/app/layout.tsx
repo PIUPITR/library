@@ -58,6 +58,12 @@ export default function RootLayout({
                 >
                   Contacts
                 </Link>
+                <Link
+                  href="/faq"
+                  className="text-gray-300 hover:text-white no-underline transition-colors"
+                >
+                  FAQ
+                </Link>
               </div>
             </div>
           </nav>
