@@ -46,6 +46,9 @@ Tai yra [Next.js](https://nextjs.org) pagrindu sukurtas projektas, skirtas knyg�
    # c:\Projects\library\library\.env.local
 
    MONGODB_URI=mongodb+srv://<naudotojas>:<slaptažodis>@<jūsų-klasterio-nuoroda>/libraryDB?retryWrites=true&w=majority
+
+   mongodb://localhost:27017/myDatabase
+   MONGODB_URI="mongodb://localhost:27017/myDatabase"
    ```
 
 ### 4. Kaip paleisti projektą
